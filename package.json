@@ -1,10 +1,10 @@
 {
-    "name": "fluttergen_cli",
+    "name": "darttoolx_cli",
     "version": "1.0.0",
     "description": "A CLI tool for generating Flutter applications with customizable options",
     "main": "bin/darttoolx.dart",
     "executables": {
-      "fluttergen": "bin/darttoolx.dart"
+      "darttoolx": "bin/darttoolx.dart"
     },
     "scripts": {
       "test": "dart test"

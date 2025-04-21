@@ -3,7 +3,7 @@ version: 1.0.0
 description: A CLI tool for generating Flutter applications with customizable options
 main: bin/darttoolx.dart
 executables:
-  fluttergen: darttoolx
+  darttoolx: darttoolx
 scripts:
   test: dart test
 keywords:

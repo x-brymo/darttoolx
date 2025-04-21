@@ -1,12 +1,12 @@
-# FlutterGen CLI Structure
+# darttoolx CLI Structure
 
 Below is the complete file structure for the Flutter CLI tool:
 
 ```
-fluttergen_cli/
+darttoolx_cli/
 │
 ├── bin/
-│   └── fluttergen.dart             # CLI entry point
+│   └── darttoolx.dart             # CLI entry point
 │
 ├── lib/
 │   ├── analyzers/                  # Project analysis tools
@@ -134,7 +134,7 @@ The CLI is designed to be extensible in the following ways:
 The CLI stores configuration in the user's home directory:
 
 ```
-~/.fluttergen/
+~/.darttoolx/
 ├── config.json           # CLI configuration
 ├── templates/            # Template storage
 │   ├── full-app/
