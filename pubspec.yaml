@@ -14,7 +14,7 @@ keywords:
   - scaffolding
 author: Mahmoud Hafez Eltarqi
 license: MIT
-homepage: https://github.com/MahmoudHafez/darttoolx
+homepage: https://github.com/x-brymo/darttoolx
 environment:
   sdk: ^3.7.2
   flutter: ">=1.17.0"

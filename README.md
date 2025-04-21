@@ -20,8 +20,8 @@ A powerful command-line tool for Flutter developers to quickly generate applicat
 dart pub global activate fluttergen_cli
 
 # Via Git
-git clone https://github.com/yourusername/fluttergen_cli.git
-cd fluttergen_cli
+git clone https://github.com/x-brymo/darttoolx.git
+cd darttoolx
 dart pub global activate --source path .
 ```
 
