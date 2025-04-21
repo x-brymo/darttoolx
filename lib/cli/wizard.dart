@@ -165,50 +165,79 @@ class CliWizard {
     return patterns[index - 1]['id'] as String;
   }
   
-  Future<String> _promptFlutterVersion() async {
-    console.writeLine('');
-    console.writeLine('STEP 5: Flutter SDK Version');
-    console.writeLine('-------------------------');
-    
-    final versions = [
-      {'id': 'latest', 'name': 'Latest Stable'},
-      {'id': '3.19.0', 'name': 'Flutter 3.19.0'},
-      {'id': '3.16.0', 'name': 'Flutter 3.16.0'},
-      {'id': '3.13.0', 'name': 'Flutter 3.13.0'},
-      {'id': 'custom', 'name': 'Custom version'},
-    ];
-    
-    for (var i = 0; i < versions.length; i++) {
-      console.writeLine('${i + 1}. ${versions[i]['name']}');
-    }
-    
-    console.write('\nSelect Flutter version (1-${versions.length}): ');
-    final selection = stdin.readLineSync()?.trim() ?? '';
-    
-    final index = int.tryParse(selection);
-    if (index == null || index < 1 || index > versions.length) {
+ Future<String> _promptFlutterVersion() async {
+  console.writeLine('');
+  console.writeLine('STEP 5: Flutter SDK Version');
+  console.writeLine('-------------------------');
+
+  final versions = [
+    {'id': 'latest', 'name': 'Latest Stable'},
+    {'id': '3.19.0', 'name': 'Flutter 3.19.0'},
+    {'id': '3.16.0', 'name': 'Flutter 3.16.0'},
+    {'id': '3.13.0', 'name': 'Flutter 3.13.0'},
+    {'id': 'custom', 'name': 'Custom version'},
+  ];
+
+  for (var i = 0; i < versions.length; i++) {
+    console.writeLine('${i + 1}. ${versions[i]['name']}');
+  }
+
+  console.write('\nSelect Flutter version (1-${versions.length}): ');
+  final selection = stdin.readLineSync()?.trim() ?? '';
+
+  final index = int.tryParse(selection);
+  if (index == null || index < 1 || index > versions.length) {
+    console.setForegroundColor(ConsoleColor.red);
+    console.writeLine('Invalid selection. Please enter a number between 1 and ${versions.length}.');
+    console.resetColorAttributes();
+    return await _promptFlutterVersion();
+  }
+
+  String selectedVersion;
+  if (versions[index - 1]['id'] == 'custom') {
+    console.write('\nEnter custom Flutter version (e.g. 3.10.0): ');
+    final customVersion = stdin.readLineSync()?.trim() ?? '';
+
+    if (customVersion.isEmpty || !RegExp(r'^\d+\.\d+\.\d+\$').hasMatch(customVersion)) {
       console.setForegroundColor(ConsoleColor.red);
-      console.writeLine('Invalid selection. Please enter a number between 1 and ${versions.length}.');
+      console.writeLine('Invalid version format. Please use the format: X.Y.Z');
       console.resetColorAttributes();
       return await _promptFlutterVersion();
     }
-    
-    if (versions[index - 1]['id'] == 'custom') {
-      console.write('\nEnter custom Flutter version (e.g. 3.10.0): ');
-      final customVersion = stdin.readLineSync()?.trim() ?? '';
-      
-      if (customVersion.isEmpty || !RegExp(r'^\d+\.\d+\.\d+$').hasMatch(customVersion)) {
-        console.setForegroundColor(ConsoleColor.red);
-        console.writeLine('Invalid version format. Please use the format: X.Y.Z');
-        console.resetColorAttributes();
-        return await _promptFlutterVersion();
-      }
-      
-      return customVersion;
-    }
-    
-    return versions[index - 1]['id'] as String;
+    selectedVersion = customVersion;
+  } else if (versions[index - 1]['id'] == 'latest') {
+    selectedVersion = 'stable';
+  } else {
+    selectedVersion = versions[index - 1]['id']!;
   }
+
+  await _installFlutterVersion(selectedVersion);
+
+  return selectedVersion;
+}
+
+Future<void> _installFlutterVersion(String version) async {
+  console.writeLine('\n🔧 Installing Flutter version $version using FVM...');
+
+  try {
+    final installResult = await Process.run('fvm', ['install', version]);
+    stdout.write(installResult.stdout);
+    stderr.write(installResult.stderr);
+
+    final useResult = await Process.run('fvm', ['use', version]);
+    stdout.write(useResult.stdout);
+    stderr.write(useResult.stderr);
+
+    console.setForegroundColor(ConsoleColor.green);
+    console.writeLine('✅ Flutter $version is installed and set using FVM.');
+  } catch (e) {
+    console.setForegroundColor(ConsoleColor.red);
+    console.writeLine('❌ Failed to install Flutter version $version: \$e');
+  } finally {
+    console.resetColorAttributes();
+  }
+}
+
   
   Future<List<String>> _promptPackages() async {
     console.writeLine('');
