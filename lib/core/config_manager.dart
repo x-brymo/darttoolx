@@ -1,6 +1,7 @@
 // lib/core/config_manager.dart
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:path/path.dart' as path;
 
 class ConfigManager {
@@ -14,7 +15,7 @@ class ConfigManager {
 
   Future<void> initialize() async {
     final homeDir = Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'];
-    _configDir = Directory(path.join(homeDir!, '.fluttergen'));
+    _configDir = Directory(path.join(homeDir!, '.darttoolx'));
     _configFile = File(path.join(_configDir.path, 'config.json'));
 
     if (!await _configDir.exists()) {
