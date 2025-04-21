@@ -47,7 +47,7 @@ class AppGenerator {
 
     // Apply additional customizations based on template
     print('Applying template customizations...');
-    await _applyTemplateCustomizations();
+    await applyTemplateCustomizations();
 
     print('Project generated successfully at: $projectPath');
   }
@@ -65,7 +65,7 @@ class AppGenerator {
     await mainFile.writeAsString(_generateMainDartContent());
   }
 
-  Future<void> _applyTemplateCustomizations() async {
+  Future<void> applyTemplateCustomizations() async {
     // Apply template-specific customizations
     switch (config.template) {
       case 'full-app':

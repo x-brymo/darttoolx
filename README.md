@@ -1,4 +1,4 @@
-# FlutterGen CLI
+# darttoolx CLI
 
 A powerful command-line tool for Flutter developers to quickly generate applications with customizable options for state management, architecture patterns, and package integration.
 
@@ -17,11 +17,11 @@ A powerful command-line tool for Flutter developers to quickly generate applicat
 
 ```bash
 # Via pub
-dart pub global activate fluttergen_cli
+dart pub global activate darttoolx_cli
 
 # Via Git
-git clone https://github.com/yourusername/fluttergen_cli.git
-cd fluttergen_cli
+git clone https://github.com/x-brymo/darttoolx.git
+cd darttoolx
 dart pub global activate --source path .
 ```
 
@@ -30,7 +30,7 @@ dart pub global activate --source path .
 ### Create a new Flutter application
 
 ```bash
-fluttergen create --name my_app --template full-app --state provider --pattern mvvm
+darttoolx create --name my_app --template full-app --state provider --pattern mvvm
 ```
 
 Options:
@@ -44,7 +44,7 @@ Options:
 ### Generate code components
 
 ```bash
-fluttergen generate --type screen --name profile --path lib/screens
+darttoolx generate --type screen --name profile --path lib/screens
 ```
 
 Options:
@@ -55,7 +55,7 @@ Options:
 ### Analyze a Flutter project
 
 ```bash
-fluttergen analyze --path ./my_flutter_project
+darttoolx analyze --path ./my_flutter_project
 ```
 
 Options:
@@ -67,7 +67,7 @@ Options:
 ### Update the CLI tool and resources
 
 ```bash
-fluttergen update --all
+darttoolx update --all
 ```
 
 Options:
@@ -78,12 +78,12 @@ Options:
 
 ## Project Structure
 
-The FlutterGen CLI tool has the following structure:
+The darttoolx CLI tool has the following structure:
 
 ```
-fluttergen_cli/
+darttoolx_cli/
 ├── bin/
-│   └── fluttergen.dart          # CLI entry point
+│   └── darttoolx.dart          # CLI entry point
 ├── lib/
 │   ├── analyzers/               # Project analysis tools
 │   │   └── project_analyzer.dart

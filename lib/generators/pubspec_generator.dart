@@ -1,7 +1,8 @@
 // lib/generators/pubspec_generator.dart
 import 'dart:io';
-import 'package:path/path.dart' as path;
+
 import 'package:darttoolx/models/app_config.dart';
+import 'package:path/path.dart' as path;
 
 class PubspecGenerator {
   final AppConfig config;
@@ -20,7 +21,7 @@ class PubspecGenerator {
 
     return '''
 name: ${config.name.toLowerCase().replaceAll(' ', '_')}
-description: A new Flutter project generated with FlutterGen CLI.
+description: A new Flutter project generated with darttoolx CLI.
 version: 1.0.0+1
 
 environment:

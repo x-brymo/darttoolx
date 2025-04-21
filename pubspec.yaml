@@ -3,7 +3,7 @@ version: 1.0.0
 description: A CLI tool for generating Flutter applications with customizable options
 main: bin/darttoolx.dart
 executables:
-  fluttergen: bin/darttoolx.dart
+  darttoolx: darttoolx
 scripts:
   test: dart test
 keywords:
@@ -14,7 +14,7 @@ keywords:
   - scaffolding
 author: Mahmoud Hafez Eltarqi
 license: MIT
-homepage: https://github.com/MahmoudHafez/darttoolx
+homepage: https://github.com/x-brymo/darttoolx
 environment:
   sdk: ^3.7.2
   flutter: ">=1.17.0"
