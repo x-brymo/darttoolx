@@ -10,6 +10,7 @@ void main(List<String> arguments) async {
     ..addCommand(UpdateCommand())
     ..addCommand(AnalyzeCommand())
     ..addCommand(GenerateCommand());
+    //..addCommand(GenerateCommand())
 
   try {
     await runner.run(arguments);
