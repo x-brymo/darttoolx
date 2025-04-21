@@ -1,6 +1,6 @@
-// bin/fluttergen.dart
+// bin/darttoolx.dart
 import 'dart:io';
-import 'package:args/args.dart';
+
 import 'package:args/command_runner.dart';
 import 'package:darttoolx/commands/commands.dart';
 import 'package:darttoolx/core/config_manager.dart';
@@ -17,7 +17,7 @@ void main(List<String> arguments) async {
     exit(0);
   }
 
-  final runner = CommandRunner('fluttergen', 'Flutter App Generator CLI')
+  final runner = CommandRunner('darttoolx', 'Flutter App Generator CLI')
     ..addCommand(CreateCommand())
     ..addCommand(UpdateCommand())
     ..addCommand(AnalyzeCommand())
@@ -46,9 +46,9 @@ void showWelcomeMessage() {
   print('architecture, state management, and packages.');
   print('');
   print('To get started, try:');
-  print('  fluttergen create                           Create a new application with wizard');
-  print('  fluttergen create --name my_app             Create app with default settings');
-  print('  fluttergen update                           Update CLI and templates');
-  print('  fluttergen --help                           Show help information');
+  print('  darttoolx create                           Create a new application with wizard');
+  print('  darttoolx create --name my_app             Create app with default settings');
+  print('  darttoolx update                           Update CLI and templates');
+  print('  darttoolx --help                           Show help information');
   print('');
 }
