@@ -10,3 +10,8 @@ void main() {
     expect(calculator.addOne(0), 1);
   });
 }
+//       : word.toLowerCase()).join('');
+//   }
+class Calculator {
+  int addOne(int value) => value + 1;
+}
